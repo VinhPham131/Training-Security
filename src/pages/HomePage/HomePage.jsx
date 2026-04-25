@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function HomePage() {
   const navigate = useNavigate();
+  const baseUrl = import.meta.env.BASE_URL || "/";
 
   return (
     <section className="h-full px-6 py-8">
@@ -13,12 +14,12 @@ export default function HomePage() {
           p-8
           w-[1200px]
           min-h-[520px]
-          bg-[url('/homepage.png')]
           bg-cover
           bg-center
           bg-no-repeat
           rounded-2xl
         "
+        style={{ backgroundImage: `url('${baseUrl}homepage.png')` }}
       >
         <div className="grid gap-4">
           <span className="text-[70px] font-black tracking-[0.8px] text-white/95">

@@ -6,6 +6,7 @@ import { getProgressPct } from '../../utils/game.js'
 
 export default function TopicsPage() {
   const navigate = useNavigate()
+  const baseUrl = import.meta.env.BASE_URL || '/'
   const items = useMemo(
     () =>
       TOPICS.map((t) => ({
@@ -13,20 +14,21 @@ export default function TopicsPage() {
         progressPct: getProgressPct(t.id),
         artSrc:
           t.id === 'greetings'
-            ? '/normal.png'
+            ? `${baseUrl}normal.png`
             : t.id === 'visitor-checkin'
-              ? '/happy.png'
+              ? `${baseUrl}happy.png`
               : t.id === 'emergency'
-                ? '/angry.png'
-                : '/normal.png',
+                ? `${baseUrl}angry.png`
+                : `${baseUrl}normal.png`,
       })),
-    [],
+    [baseUrl],
   )
 
   return (
     <section
       aria-label="Topics"
-      className="relative h-[700px] w-[1400px] mx-auto rounded-2xl overflow-hidden bg-[url('/homepage.png')] bg-cover bg-center bg-no-repeat"
+      className="relative h-[700px] w-[1400px] mx-auto rounded-2xl overflow-hidden bg-cover bg-center bg-no-repeat"
+      style={{ backgroundImage: `url('${baseUrl}homepage.png')` }}
     >
       <div
         className="absolute inset-0 bg-linear-to-r from-black/65 via-black/35 to-black/25"

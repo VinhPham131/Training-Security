@@ -5,13 +5,15 @@ import { loadState } from '../../utils/storage.js'
 
 export default function BadgesPage() {
   const navigate = useNavigate()
+  const baseUrl = import.meta.env.BASE_URL || '/'
   const s = useMemo(() => loadState(), [])
   const unlocked = s.badgesUnlocked || {}
 
   return (
     <section
       aria-label="Badges"
-      className="relative h-[700px] w-[1400px] mx-auto rounded-2xl overflow-hidden bg-[url('/homepage.png')] bg-cover bg-center bg-no-repeat"
+      className="relative h-[700px] w-[1400px] mx-auto rounded-2xl overflow-hidden bg-cover bg-center bg-no-repeat"
+      style={{ backgroundImage: `url('${baseUrl}homepage.png')` }}
     >
       <div className="absolute inset-0 bg-linear-to-r from-black/60 via-black/32 to-black/25" aria-hidden="true" />
 

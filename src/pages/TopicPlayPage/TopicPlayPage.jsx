@@ -11,6 +11,7 @@ const DEFAULT_TIMER_MS = 12000
 export default function TopicPlayPage() {
   const { topicId } = useParams()
   const navigate = useNavigate()
+  const baseUrl = import.meta.env.BASE_URL || '/'
   const topic = TOPICS.find((t) => t.id === topicId)
   const questions = useMemo(() => getQuestionsForTopic(topicId), [topicId])
   const runStartRef = useRef(0)
@@ -138,7 +139,7 @@ export default function TopicPlayPage() {
   }
 
   const topicIndex = Math.max(1, (topic?.level || 1))
-  const bgSrc = phase === 'wrong' ? '/angry.png' : phase === 'complete' ? '/happy.png' : '/normal.png'
+  const bgSrc = `${baseUrl}${phase === 'wrong' ? 'angry.png' : phase === 'complete' ? 'happy.png' : 'normal.png'}`
 
   const retry = () => {
     // Retry only the current question (do not reset run progress).

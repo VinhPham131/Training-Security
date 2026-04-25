@@ -5,6 +5,7 @@ import Button from '../../components/Button/Button.jsx'
 
 export default function MenuPage() {
   const navigate = useNavigate()
+  const baseUrl = import.meta.env.BASE_URL || '/'
   const initial = useMemo(() => loadState(), [])
   const [name, setName] = useState(initial.player?.name || '')
 
@@ -24,7 +25,8 @@ export default function MenuPage() {
   return (
     <section
       aria-label="Main menu"
-      className="relative h-[700px] w-[1400px] mx-auto rounded-2xl overflow-hidden bg-[url('/homepage.png')] bg-cover bg-center bg-no-repeat"
+      className="relative h-[700px] w-[1400px] mx-auto rounded-2xl overflow-hidden bg-cover bg-center bg-no-repeat"
+      style={{ backgroundImage: `url('${baseUrl}homepage.png')` }}
     >
       <div className="absolute inset-0 bg-linear-to-r from-black/70 via-black/40 to-black/20" aria-hidden="true" />
       <div

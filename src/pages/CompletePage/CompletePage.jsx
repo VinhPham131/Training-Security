@@ -6,11 +6,13 @@ export default function CompletePage() {
   const navigate = useNavigate()
   const location = useLocation()
   const summary = location.state?.summary || null
+  const baseUrl = import.meta.env.BASE_URL || '/'
 
   return (
     <section
       aria-label="Complete"
-      className="relative h-[700px] w-[1400px] rounded-2xl overflow-hidden bg-[url('/homepage.png')] bg-cover bg-center bg-no-repeat"
+      className="relative h-[700px] w-[1400px] rounded-2xl overflow-hidden bg-cover bg-center bg-no-repeat"
+      style={{ backgroundImage: `url('${baseUrl}homepage.png')` }}
     >
       <div className="absolute inset-0 bg-linear-to-r from-black/55 via-black/30 to-black/20" aria-hidden="true" />
 
